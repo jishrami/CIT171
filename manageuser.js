@@ -46,12 +46,24 @@ function checkexpiredtoken(token){
     }
 }
 
+function oneTimePassword(){
+    
+    $.ajax({
+        type: 'POST',
+        url: 'https://dev.stedi.me/twofactorlogin/5202576202',
+        data: JSON.stringify({userName, password}),
+        contentType: "application/text",
+        dataType: 'text'
+    });
+
+}
+
 function userlogin(){
     setuserpassword();
     setusername();
     $.ajax({
         type: 'POST',
-        url: '/login',
+        url: 'https://dev.stedi.me/login',
         data: JSON.stringify({userName, password}),
         success: function(data) {
             window.location.href = "/timer.html#"+data;//add the token to the url
